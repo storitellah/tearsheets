@@ -1,59 +1,75 @@
-# The Otieno Chronicle — Photojournalism Tearsheet Archive
+<h1 align="center">The Tearsheet Archives of Brian Otieno</h1>
 
-A modern, **static, front-end-only** web archive styled like a classic broadsheet
-newspaper, for showcasing editorial photojournalism tearsheets, print spreads and
-front-page features. No backend, no build step — just open `index.html`.
+<p align="center">
+  <em>A broadsheet-style, front-end-only archive of editorial photojournalism —<br>
+  print spreads, cover pages and front-page features.</em>
+</p>
 
-## Files
+<p align="center">
+  <strong>🌐 Live:</strong> <a href="https://tearsheets.pages.dev/">tearsheets.pages.dev</a>
+  &nbsp;·&nbsp; <strong>📷 Photographer:</strong> <a href="https://storitellah.com">storitellah.com</a>
+  &nbsp;·&nbsp; <strong>🗞 NYT:</strong> <a href="https://www.nytimes.com/by/brian-otieno">nytimes.com/by/brian-otieno</a>
+</p>
 
-| File            | What it is                                                        |
-| --------------- | ----------------------------------------------------------------- |
-| `index.html`    | Page structure (masthead, ticker, filters, grid, lightbox).       |
-| `styles.css`    | The broadsheet design system — edit the `:root` variables to reskin. |
-| `tearsheets.js` | **The data file.** Edit this to add/remove/change clippings.       |
-| `app.js`        | Rendering, filtering and lightbox logic (rarely needs edits).      |
+---
 
-## Run it
+### What it is
 
-Open `index.html` in a browser, or serve the folder:
+A single, static newspaper laid out like the front page of a great daily — a warm
+newsprint palette, a readable editorial serif, and a three-column homepage grid
+(**timeline & outlet rails · lead story · the photographer**). Every tearsheet in
+Brian Otieno's Google Drive archive is pulled in automatically; where the original
+online story is known, the card links straight to it.
+
+### Highlights
+
+| | |
+|---|---|
+| 🏛 **Broadsheet design** | Masthead, oxblood kickers, minimal rules, ink-on-paper grain |
+| 🗂 **Front Page & Cover Pages tabs** | A dedicated tab for cover & front-page work (New York Times–heavy) |
+| 🕰 **Timeline + outlet filters** | Filter instantly by year or publication in the left rail |
+| 🖼 **Original aspect ratios** | Masonry grid shows every clipping at its true proportions |
+| 🔍 **Reader lightbox** | Click any sheet for a high-res, zoomable view with metadata & source link |
+| 👤 **The Photographer** | Bio + full contact card (email · phone · WhatsApp · web · NYT) |
+| 📱 **Responsive** | Three columns on desktop, a clean single column on mobile |
+
+### Files
+
+| File | Purpose |
+|------|---------|
+| `index.html` | Page structure |
+| `styles.css` | Broadsheet design system — reskin from the `:root` variables |
+| `tearsheets.js` | **Data** — `CONFIG`, `BIO`, `CONTACT` and the `TEARSHEETS` array |
+| `app.js` | Rendering, filtering, tabs and the lightbox |
+| `favicon.svg` | `BO` monogram tab icon |
+
+### Run it
 
 ```bash
-python3 -m http.server 8000   # then visit http://localhost:8000
+python3 -m http.server 8000    # → http://localhost:8000
 ```
 
-An internet connection is needed for the Google Fonts, Tailwind CDN, and the
-Google Drive images to load.
+### Add or edit a tearsheet
 
-## Add a tearsheet
+Everything lives in **`tearsheets.js`**. Copy a block in the `TEARSHEETS` array:
 
-Open `tearsheets.js` and copy one `{ ... }` block inside the `TEARSHEETS` array:
-
-```javascript
+```js
 {
   id: "nyt-2025-example",
   title: "Cover Story: Title Here",
   outlet: "The New York Times",
-  date: "2025-11-14",          // YYYY-MM-DD — powers the year filter & sorting
-  page: "Page A1",
-  category: "Front Page",
-  summary: "Brief synopsis of the photo feature...",
+  date: "2025-11-14",           // drives the timeline & sorting
+  page: "Front Page",
+  category: "Foreign Affairs",
+  cover: true,                  // show under the “Cover Pages” tab
+  summary: "Brief synopsis of the photo feature…",
   imageUrl: "https://drive.google.com/file/d/FILE_ID/view?usp=sharing",
-  articleUrl: "https://...",   // optional link to the original online story
+  articleUrl: "https://…"       // optional — links to the original story
 }
 ```
 
-The most recent item (by `date`) automatically becomes the **Lead Story** above
-the fold; the rest fill the clippings grid.
+> **Google Drive images** — paste the normal *Share* link; it is converted to a
+> hot-linkable image automatically. For images to appear, set each file's sharing
+> to **“Anyone with the link.”** Local paths and direct URLs also work.
 
-### Google Drive images
-
-Just paste the normal Drive **Share** link — the app converts it to a
-hot-linkable image for you (see `driveToImage()` in `app.js`). For images to
-appear, set each file's sharing to **"Anyone with the link."** Local paths
-(e.g. `img/story.jpg`) and direct image URLs also work.
-
-## Customize the newspaper
-
-Edit the `CONFIG` object at the top of `tearsheets.js` to change the masthead
-title, motto, location, weather line and edition numbers. Colours and fonts live
-in the `:root` block of `styles.css`.
+<p align="center"><sub>All photographs © Brian Otieno, and their respective photographers and publications. Set for archival &amp; portfolio use.</sub></p>

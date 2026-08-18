@@ -3,131 +3,125 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Otieno Chronicle — Photojournalism Tearsheet Archive</title>
-  <meta name="description" content="A broadsheet-style archive of editorial photojournalism tearsheets, print spreads and front-page features." />
+  <title>The Tearsheet Archives of Brian Otieno</title>
+  <meta name="description" content="A broadsheet-style archive of the editorial photojournalism, print spreads and front-page features of Brian Otieno — documentary photographer, Nairobi." />
 
-  <!-- ── Fonts: gothic masthead + editorial serifs ─────────────────────── -->
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+
+  <!-- Fonts: readable editorial serifs + a Franklin-style sans for labels -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=UnifrakturMaguntia&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Playfair+Display:wght@700;800;900&family=Newsreader:opsz,wght@6..72,400;6..72,500&family=Libre+Franklin:wght@400;600;700;800&display=swap"
     rel="stylesheet"
   />
 
-  <!-- ── Tailwind (CDN) — available for quick utility tweaks ────────────── -->
+  <!-- Tailwind (CDN) — available for quick utility tweaks -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- ── Broadsheet design system ──────────────────────────────────────── -->
   <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
 
-  <!-- ════════════════════════════════════════════════════════════════════
-       TOP UTILITY BAR — live date, location, weather, edition numbers
-       ════════════════════════════════════════════════════════════════════ -->
+  <!-- ── Top utility bar ─────────────────────────────────────────────────── -->
   <div class="topbar">
     <div class="wrap">
       <div class="tb-group">
-        <span class="tb-item"><span class="tb-star">✦</span><span id="bar-date">—</span></span>
+        <span id="bar-date">—</span>
+        <span>📍 <b id="bar-location">—</b></span>
+        <span id="bar-weather">—</span>
       </div>
       <div class="tb-group">
-        <span class="tb-item">📍 <span id="bar-location">—</span></span>
-        <span class="tb-item">☀ <span id="bar-weather">—</span></span>
-        <span class="tb-item" id="bar-volume">—</span>
-        <span class="tb-item" id="bar-price">—</span>
+        <span id="bar-edition">—</span>
+        <span class="tb-site"><a id="bar-site" href="#" target="_blank" rel="noopener">tearsheets.pages.dev</a></span>
       </div>
     </div>
   </div>
 
-  <!-- ════════════════════════════════════════════════════════════════════
-       MASTHEAD — nameplate, motto, and summary statistics
-       ════════════════════════════════════════════════════════════════════ -->
+  <!-- ── Masthead (nameplate links to storitellah.com, no rules around it) ── -->
   <header class="wrap masthead">
-    <hr class="masthead-rule-top" />
-    <h1 class="masthead-title" id="masthead-title">THE OTIENO CHRONICLE</h1>
-    <p class="masthead-motto" id="masthead-motto">Photojournalism · Tearsheets · Front-Page Features</p>
-
-    <div class="masthead-stats">
-      <div class="stat">
-        <span class="stat-num" id="stat-publications">—</span>
-        <span class="stat-label">Publications</span>
-      </div>
-      <div class="stat">
-        <span class="stat-num" id="stat-years">—</span>
-        <span class="stat-label">Years Active</span>
-      </div>
-      <div class="stat">
-        <span class="stat-num" id="stat-outlets">—</span>
-        <span class="stat-label">Outlets Featured</span>
-      </div>
-    </div>
-    <hr class="masthead-rule-bottom" />
+    <h1 class="masthead-title"><a id="masthead-link" href="#"><span id="masthead-title">The Tearsheet Archives of Brian Otieno</span></a></h1>
+    <p class="masthead-motto" id="masthead-motto">Photojournalism · Print Spreads · Front-Page Features</p>
   </header>
 
-  <!-- ════════════════════════════════════════════════════════════════════
-       NEWS TICKER — scrolling latest headlines
-       ════════════════════════════════════════════════════════════════════ -->
-  <div class="ticker">
-    <div class="wrap" style="padding:0;">
-      <div class="ticker-inner">
-        <div class="ticker-label">Latest Edition</div>
-        <div class="ticker-viewport">
-          <div class="ticker-track" id="ticker-track"></div>
+  <!-- ── Primary navigation / tabs ───────────────────────────────────────── -->
+  <nav class="nav">
+    <div class="wrap" id="tabs"></div>
+  </nav>
+
+  <!-- ── Three-column homepage layout ────────────────────────────────────── -->
+  <div class="wrap layout">
+
+    <!-- Left rail: year timeline + outlet filter -->
+    <aside class="rail-left">
+      <div class="sticky">
+        <div class="rail-block">
+          <p class="rail-heading">Timeline</p>
+          <div class="year-list" id="year-list"></div>
+        </div>
+        <div class="rail-block">
+          <p class="rail-heading">Outlets</p>
+          <div class="outlet-list" id="outlet-list"></div>
         </div>
       </div>
-    </div>
+    </aside>
+
+    <!-- Centre well: stories -->
+    <main class="center">
+      <!-- Filters collapse to dropdowns on narrow screens -->
+      <div class="mobile-filters">
+        <select id="m-year"></select>
+        <select id="m-outlet"></select>
+      </div>
+
+      <div class="section-head" id="section-head">
+        <h2 id="section-title">The Front Page</h2>
+        <span class="count" id="results-count"></span>
+      </div>
+
+      <!-- Archive view (lead + grid) -->
+      <div id="archive-view">
+        <section class="lead" id="lead-story"></section>
+        <section class="grid" id="grid"></section>
+        <p class="empty-state" id="empty-state" hidden>No tearsheets match this filter — try another year or outlet.</p>
+      </div>
+
+      <!-- About view (bio + contact), toggled by the Photographer tab -->
+      <div id="about-view" hidden></div>
+    </main>
+
+    <!-- Right rail: the photographer & contact -->
+    <aside class="rail-right">
+      <div class="sticky">
+        <div class="bio-card" id="bio-card"></div>
+
+        <div class="rail-block">
+          <p class="rail-heading">The Archive</p>
+          <div class="stat-row" id="stat-row"></div>
+        </div>
+
+        <div class="rail-block">
+          <p class="rail-heading">Contact</p>
+          <div class="contact-block" id="contact-block"></div>
+          <a class="btn-nyt" id="nyt-btn" href="#" target="_blank" rel="noopener">View NYT Profile ↗</a>
+        </div>
+      </div>
+    </aside>
   </div>
 
-  <main class="wrap">
-
-    <!-- ══════════════════════════════════════════════════════════════════
-         FILTER TOOLBAR — year ribbon + outlet chips
-         ══════════════════════════════════════════════════════════════════ -->
-    <section class="toolbar">
-      <p class="toolbar-heading">Browse by Year</p>
-      <div class="year-ribbon" id="year-ribbon"></div>
-
-      <p class="toolbar-heading">Filter by Outlet</p>
-      <div class="outlet-chips" id="outlet-chips"></div>
-
-      <div class="results-bar">
-        <h2>The Front Page</h2>
-        <span class="results-count" id="results-count"></span>
-      </div>
-    </section>
-
-    <!-- ══════════════════════════════════════════════════════════════════
-         LEAD STORY — above the fold hero feature
-         ══════════════════════════════════════════════════════════════════ -->
-    <section class="lead-story" id="lead-story"></section>
-
-    <!-- ══════════════════════════════════════════════════════════════════
-         CLIPPINGS GRID — sub-features / masonry
-         ══════════════════════════════════════════════════════════════════ -->
-    <section class="grid" id="grid"></section>
-    <p class="empty-state" id="empty-state" hidden>No clippings match this filter — try another year or outlet.</p>
-
-  </main>
-
-  <!-- ════════════════════════════════════════════════════════════════════
-       COLOPHON / FOOTER
-       ════════════════════════════════════════════════════════════════════ -->
+  <!-- ── Footer / colophon ───────────────────────────────────────────────── -->
   <footer class="wrap colophon">
-    <p><strong>The Otieno Chronicle</strong> — a static, front-end-only tearsheet archive.<br />
-    All photographs © their respective photographer and publications. Set for archival &amp; portfolio use.</p>
+    <p id="footer-line"></p>
   </footer>
 
-  <!-- ════════════════════════════════════════════════════════════════════
-       LIGHTBOX / READER MODAL
-       ════════════════════════════════════════════════════════════════════ -->
+  <!-- ── Lightbox / reader modal ─────────────────────────────────────────── -->
   <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Tearsheet reader">
     <div class="modal-backdrop"></div>
     <div class="modal-panel">
       <button class="modal-close" id="modal-close" aria-label="Close reader">×</button>
-      <div class="modal-imgcol">
-        <img id="modal-img" src="" alt="" />
-      </div>
+      <div class="modal-imgcol"><img id="modal-img" src="" alt="" /></div>
       <div class="modal-meta">
         <div class="kicker">
           <span class="outlet-badge" id="modal-outlet"></span>
@@ -145,7 +139,6 @@
     </div>
   </div>
 
-  <!-- ── Data first, then logic ────────────────────────────────────────── -->
   <script src="tearsheets.js"></script>
   <script src="app.js"></script>
 </body>
