@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Otieno Chronicle — Photojournalism Tearsheet Archive</title>
+  <meta name="description" content="A broadsheet-style archive of editorial photojournalism tearsheets, print spreads and front-page features." />
+
+  <!-- ── Fonts: gothic masthead + editorial serifs ─────────────────────── -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=UnifrakturMaguntia&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- ── Tailwind (CDN) — available for quick utility tweaks ────────────── -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- ── Broadsheet design system ──────────────────────────────────────── -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       TOP UTILITY BAR — live date, location, weather, edition numbers
+       ════════════════════════════════════════════════════════════════════ -->
+  <div class="topbar">
+    <div class="wrap">
+      <div class="tb-group">
+        <span class="tb-item"><span class="tb-star">✦</span><span id="bar-date">—</span></span>
+      </div>
+      <div class="tb-group">
+        <span class="tb-item">📍 <span id="bar-location">—</span></span>
+        <span class="tb-item">☀ <span id="bar-weather">—</span></span>
+        <span class="tb-item" id="bar-volume">—</span>
+        <span class="tb-item" id="bar-price">—</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       MASTHEAD — nameplate, motto, and summary statistics
+       ════════════════════════════════════════════════════════════════════ -->
+  <header class="wrap masthead">
+    <hr class="masthead-rule-top" />
+    <h1 class="masthead-title" id="masthead-title">THE OTIENO CHRONICLE</h1>
+    <p class="masthead-motto" id="masthead-motto">Photojournalism · Tearsheets · Front-Page Features</p>
+
+    <div class="masthead-stats">
+      <div class="stat">
+        <span class="stat-num" id="stat-publications">—</span>
+        <span class="stat-label">Publications</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num" id="stat-years">—</span>
+        <span class="stat-label">Years Active</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num" id="stat-outlets">—</span>
+        <span class="stat-label">Outlets Featured</span>
+      </div>
+    </div>
+    <hr class="masthead-rule-bottom" />
+  </header>
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       NEWS TICKER — scrolling latest headlines
+       ════════════════════════════════════════════════════════════════════ -->
+  <div class="ticker">
+    <div class="wrap" style="padding:0;">
+      <div class="ticker-inner">
+        <div class="ticker-label">Latest Edition</div>
+        <div class="ticker-viewport">
+          <div class="ticker-track" id="ticker-track"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main class="wrap">
+
+    <!-- ══════════════════════════════════════════════════════════════════
+         FILTER TOOLBAR — year ribbon + outlet chips
+         ══════════════════════════════════════════════════════════════════ -->
+    <section class="toolbar">
+      <p class="toolbar-heading">Browse by Year</p>
+      <div class="year-ribbon" id="year-ribbon"></div>
+
+      <p class="toolbar-heading">Filter by Outlet</p>
+      <div class="outlet-chips" id="outlet-chips"></div>
+
+      <div class="results-bar">
+        <h2>The Front Page</h2>
+        <span class="results-count" id="results-count"></span>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════════════
+         LEAD STORY — above the fold hero feature
+         ══════════════════════════════════════════════════════════════════ -->
+    <section class="lead-story" id="lead-story"></section>
+
+    <!-- ══════════════════════════════════════════════════════════════════
+         CLIPPINGS GRID — sub-features / masonry
+         ══════════════════════════════════════════════════════════════════ -->
+    <section class="grid" id="grid"></section>
+    <p class="empty-state" id="empty-state" hidden>No clippings match this filter — try another year or outlet.</p>
+
+  </main>
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       COLOPHON / FOOTER
+       ════════════════════════════════════════════════════════════════════ -->
+  <footer class="wrap colophon">
+    <p><strong>The Otieno Chronicle</strong> — a static, front-end-only tearsheet archive.<br />
+    All photographs © their respective photographer and publications. Set for archival &amp; portfolio use.</p>
+  </footer>
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       LIGHTBOX / READER MODAL
+       ════════════════════════════════════════════════════════════════════ -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Tearsheet reader">
+    <div class="modal-backdrop"></div>
+    <div class="modal-panel">
+      <button class="modal-close" id="modal-close" aria-label="Close reader">×</button>
+      <div class="modal-imgcol">
+        <img id="modal-img" src="" alt="" />
+      </div>
+      <div class="modal-meta">
+        <div class="kicker">
+          <span class="outlet-badge" id="modal-outlet"></span>
+          <span class="dot">•</span>
+          <span id="modal-category"></span>
+        </div>
+        <h2 class="modal-headline" id="modal-title"></h2>
+        <dl class="modal-dl">
+          <dt>Date</dt><dd id="modal-date"></dd>
+          <dt>Section</dt><dd id="modal-page"></dd>
+        </dl>
+        <p class="modal-summary" id="modal-summary"></p>
+        <a class="modal-link" id="modal-link" href="#" target="_blank" rel="noopener" hidden></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Data first, then logic ────────────────────────────────────────── -->
+  <script src="tearsheets.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
