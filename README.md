@@ -1,65 +1,117 @@
-<h1 align="center">The Tearsheet Archives of Brian Otieno</h1>
+<div align="center">
 
-<p align="center">
-  <em>A broadsheet-style, front-end-only archive of editorial photojournalism —<br>
-  print spreads, cover pages and front-page features.</em>
-</p>
+# 🗞 The Tearsheet Archives of Brian Otieno
 
-<p align="center">
-  <strong>🌐 Live:</strong> <a href="https://tearsheets.pages.dev/">tearsheets.pages.dev</a>
-  &nbsp;·&nbsp; <strong>📷 Photographer:</strong> <a href="https://storitellah.com">storitellah.com</a>
-  &nbsp;·&nbsp; <strong>🗞 NYT:</strong> <a href="https://www.nytimes.com/by/brian-otieno">nytimes.com/by/brian-otieno</a>
-</p>
+**A static, front-end-only web archive of editorial photojournalism —
+print spreads, cover pages & front-page features, laid out like a classic broadsheet.**
+
+<br>
+
+![tearsheets](https://img.shields.io/badge/tearsheets-256-7a1e12?style=for-the-badge)
+![cover pages](https://img.shields.io/badge/cover_pages-112-1a1a1a?style=for-the-badge)
+![articles](https://img.shields.io/badge/articles-25-326891?style=for-the-badge)
+![outlets](https://img.shields.io/badge/outlets-26-555?style=for-the-badge)
+![years](https://img.shields.io/badge/years-2017–2026-444?style=for-the-badge)
+
+![no backend](https://img.shields.io/badge/backend-none-2ea44f?style=flat-square)
+![no build step](https://img.shields.io/badge/build_step-none-2ea44f?style=flat-square)
+![vanilla JS](https://img.shields.io/badge/JavaScript-vanilla-f1e05a?style=flat-square)
+![responsive](https://img.shields.io/badge/layout-responsive-326891?style=flat-square)
+![hosting](https://img.shields.io/badge/Cloudflare_Pages-live-F38020?style=flat-square)
+
+**🌐 [tearsheets.pages.dev](https://tearsheets.pages.dev/)** &nbsp;·&nbsp; **📷 [storitellah.com](https://storitellah.com)** &nbsp;·&nbsp; **📸 KiberaStories**
+
+</div>
 
 ---
 
-### What it is
+## 📖 At a glance
 
-A single, static front page in the **New York Times house style** — self-hosted
-NYT type (Cheltenham headlines, Imperial body, Franklin labels), a white ground,
-column rules, and a three-column layout (**filters · stories · the photographer**).
-Brian Otieno's full Google Drive archive is pulled in automatically; where the
-original online story is known, it links straight to it.
+> One HTML page. Zero backend. Open it and the whole archive assembles itself from a single
+> data file. Every clipping links to its original story where one is known.
 
-### Highlights
+```
+┌──────────────────────────────────────────────────────────────┐
+│                 THE TEARSHEET ARCHIVES                        │  ← masthead
+├──────────────────────────────────────────────────────────────┤
+│  FRONT PAGE · COVER PAGES · THE ARTICLES · THE PHOTOGRAPHER   │  ← tabs
+├──────────┬──────────────────────────────────────┬────────────┤
+│ TIMELINE │            LEAD STORY                 │  PHOTO-     │
+│  2026    │  ┌────────────┐  Headline …           │  GRAPHER    │
+│  2025    │  │   image    │  dateline · excerpt   │  bio · stats│
+│  …       │  └────────────┘                       │  contact    │
+│ OUTLETS  │  ── clippings grid (masonry) ──       │  profiles   │
+│  filters │  [img][img][img][img][img][img]       │             │
+└──────────┴──────────────────────────────────────┴────────────┘
+     left rail            centre well               right rail
+```
+
+## 🧭 Four ways in
+
+| Tab | What it shows |
+|:--|:--|
+| 📰 **Front Page** | A lead story + a masonry grid of **all 256 tearsheets**, each at its true aspect ratio |
+| 🏆 **Cover Pages** | **112** cover & front-page appearances |
+| 🔗 **The Articles** | **25** published stories as clickable links to the originals |
+| 👤 **The Photographer** | Biography, career highlights & full contact card |
+
+## ✨ Features
 
 | | |
-|---|---|
-| 🗞 **NYT design system** | Cheltenham / Imperial / Franklin, column rules, no external CDNs |
-| 🗂 **Four tabs** | Front Page · Cover Pages (NYT-heavy) · The Articles · The Photographer |
-| 🔗 **The Articles** | A curated, clickable list of 25 published stories, incl. ProPublica |
-| 🕰 **Timeline + outlet filters** | Filter instantly by year or publication in the left rail |
-| 🖼 **Original aspect ratios** | Masonry grid shows every clipping at its true proportions |
-| ⚡ **Instant lightbox** | Opens with the cached thumbnail, then swaps in the hi-res image |
-| 👤 **The Photographer** | Bio + contacts (email · phone · WhatsApp · web · NYT / Spiegel / ProPublica) |
-| 📱 **Responsive** | Three columns on desktop, a clean single column on mobile |
+|:--:|:--|
+| 🎞 | **Broadsheet design** — warm masthead, column rules, editorial serifs, oxblood kickers |
+| 🕰 | **Timeline + outlet filters** — narrow the archive by year or publication instantly |
+| 🖼 | **True aspect ratios** — every clipping keeps its original proportions, never cropped |
+| ⚡ | **Instant lightbox** — opens with the cached thumbnail, then swaps in the hi-res image |
+| 📱 | **Fully responsive** — three columns on desktop, a clean single column on phones |
+| 🔌 | **No backend, no build** — vanilla JS + self-hosted fonts, deploys as static files |
 
-### Files
+## 📊 By the numbers
 
-| File | Purpose |
-|------|---------|
-| `index.html` | Page structure |
-| `styles.css` | NYT design system — self-hosted `@font-face`, reskin from `:root` |
-| `tearsheets.js` | **Data** — `CONFIG`, `BIO`, `CONTACT`, `ARTICLES`, `TEARSHEETS` |
-| `app.js` | Rendering, filtering, tabs and the lightbox |
-| `fonts/` | NYT Cheltenham / Imperial / Franklin (`.ttf`) |
-| `favicon.svg` | `BO` monogram tab icon |
+```
+Tearsheets   ████████████████████████████  256
+Cover pages  ████████████                   112
+Outlets      ██████                          26
+Articles     ██                              25
+Span         2017 ──────────────────────▶ 2026
+```
 
-### Run it
+## 🗂 Project map
+
+```mermaid
+flowchart LR
+    D["📄 tearsheets.js<br/>CONFIG · BIO · CONTACT<br/>ARTICLES · TEARSHEETS"] --> A["⚙️ app.js<br/>render · filter · lightbox"]
+    A --> T1["📰 Front Page"]
+    A --> T2["🏆 Cover Pages"]
+    A --> T3["🔗 The Articles"]
+    A --> T4["👤 The Photographer"]
+    S["🎨 styles.css<br/>design system + fonts"] -.-> A
+```
+
+| File | Role |
+|:--|:--|
+| `index.html` | Page skeleton |
+| `styles.css` | Design system — self-hosted `@font-face`, re-skin from the `:root` variables |
+| `tearsheets.js` | **The data** — `CONFIG`, `BIO`, `CONTACT`, `ARTICLES`, `TEARSHEETS` |
+| `app.js` | Rendering, filtering, tabs & the lightbox |
+| `fonts/` | Editorial serif + sans typefaces (`.ttf`) |
+| `favicon.svg` | `BO` monogram |
+
+## 🚀 Quick start
 
 ```bash
 python3 -m http.server 8000    # → http://localhost:8000
 ```
 
-### Add or edit a tearsheet
+## ✏️ Add or edit a tearsheet
 
-Everything lives in **`tearsheets.js`**. Copy a block in the `TEARSHEETS` array:
+Everything lives in **`tearsheets.js`** — copy one block inside the `TEARSHEETS` array:
 
 ```js
 {
-  id: "nyt-2025-example",
+  id: "example-2025",
   title: "Cover Story: Title Here",
-  outlet: "The New York Times",
+  outlet: "The Guardian",
   date: "2025-11-14",           // drives the timeline & sorting
   page: "Front Page",
   category: "Foreign Affairs",
@@ -70,8 +122,12 @@ Everything lives in **`tearsheets.js`**. Copy a block in the `TEARSHEETS` array:
 }
 ```
 
-> **Google Drive images** — paste the normal *Share* link; it is converted to a
-> hot-linkable image automatically. For images to appear, set each file's sharing
-> to **“Anyone with the link.”** Local paths and direct URLs also work.
+> 🖇 **Google Drive images** — paste the normal *Share* link; it is converted to a
+> hot-linkable image automatically. For images to appear, set each file's sharing to
+> **“Anyone with the link.”** Local paths and direct URLs work too.
 
-<p align="center"><sub>All photographs © Brian Otieno, and their respective photographers and publications. Set for archival &amp; portfolio use.</sub></p>
+---
+
+<div align="center">
+<sub>All photographs © Brian Otieno, and their respective photographers and publications. Set for archival &amp; portfolio use.</sub>
+</div>
