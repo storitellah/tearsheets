@@ -15,22 +15,23 @@
 
 ### What it is
 
-A single, static newspaper laid out like the front page of a great daily — a warm
-newsprint palette, a readable editorial serif, and a three-column homepage grid
-(**timeline & outlet rails · lead story · the photographer**). Every tearsheet in
-Brian Otieno's Google Drive archive is pulled in automatically; where the original
-online story is known, the card links straight to it.
+A single, static front page in the **New York Times house style** — self-hosted
+NYT type (Cheltenham headlines, Imperial body, Franklin labels), a white ground,
+column rules, and a three-column layout (**filters · stories · the photographer**).
+Brian Otieno's full Google Drive archive is pulled in automatically; where the
+original online story is known, it links straight to it.
 
 ### Highlights
 
 | | |
 |---|---|
-| 🏛 **Broadsheet design** | Masthead, oxblood kickers, minimal rules, ink-on-paper grain |
-| 🗂 **Front Page & Cover Pages tabs** | A dedicated tab for cover & front-page work (New York Times–heavy) |
+| 🗞 **NYT design system** | Cheltenham / Imperial / Franklin, column rules, no external CDNs |
+| 🗂 **Four tabs** | Front Page · Cover Pages (NYT-heavy) · The Articles · The Photographer |
+| 🔗 **The Articles** | A curated, clickable list of 25 published stories, incl. ProPublica |
 | 🕰 **Timeline + outlet filters** | Filter instantly by year or publication in the left rail |
 | 🖼 **Original aspect ratios** | Masonry grid shows every clipping at its true proportions |
-| 🔍 **Reader lightbox** | Click any sheet for a high-res, zoomable view with metadata & source link |
-| 👤 **The Photographer** | Bio + full contact card (email · phone · WhatsApp · web · NYT) |
+| ⚡ **Instant lightbox** | Opens with the cached thumbnail, then swaps in the hi-res image |
+| 👤 **The Photographer** | Bio + contacts (email · phone · WhatsApp · web · NYT / Spiegel / ProPublica) |
 | 📱 **Responsive** | Three columns on desktop, a clean single column on mobile |
 
 ### Files
@@ -38,9 +39,10 @@ online story is known, the card links straight to it.
 | File | Purpose |
 |------|---------|
 | `index.html` | Page structure |
-| `styles.css` | Broadsheet design system — reskin from the `:root` variables |
-| `tearsheets.js` | **Data** — `CONFIG`, `BIO`, `CONTACT` and the `TEARSHEETS` array |
+| `styles.css` | NYT design system — self-hosted `@font-face`, reskin from `:root` |
+| `tearsheets.js` | **Data** — `CONFIG`, `BIO`, `CONTACT`, `ARTICLES`, `TEARSHEETS` |
 | `app.js` | Rendering, filtering, tabs and the lightbox |
+| `fonts/` | NYT Cheltenham / Imperial / Franklin (`.ttf`) |
 | `favicon.svg` | `BO` monogram tab icon |
 
 ### Run it
