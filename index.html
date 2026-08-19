@@ -9,17 +9,7 @@
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
 
-  <!-- Fonts: readable editorial serifs + a Franklin-style sans for labels -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Playfair+Display:wght@700;800;900&family=Newsreader:opsz,wght@6..72,400;6..72,500&family=Libre+Franklin:wght@400;600;700;800&display=swap"
-    rel="stylesheet"
-  />
-
-  <!-- Tailwind (CDN) — available for quick utility tweaks -->
-  <script src="https://cdn.tailwindcss.com"></script>
-
+  <!-- Type is self-hosted (NYT Cheltenham / Imperial / Franklin) in styles.css -->
   <link rel="stylesheet" href="styles.css" />
 </head>
 
@@ -54,17 +44,20 @@
   <!-- ── Three-column homepage layout ────────────────────────────────────── -->
   <div class="wrap layout">
 
-    <!-- Left rail: year timeline + outlet filter -->
+    <!-- Left rail: filters (browse) OR career facts (about) — never blank -->
     <aside class="rail-left">
-      <div class="sticky">
-        <div class="rail-block">
-          <p class="rail-heading">Timeline</p>
-          <div class="year-list" id="year-list"></div>
+      <div class="sticky" id="rail-left-inner">
+        <div id="rail-filters">
+          <div class="rail-block">
+            <p class="rail-heading" id="year-heading">Timeline</p>
+            <div class="year-list" id="year-list"></div>
+          </div>
+          <div class="rail-block">
+            <p class="rail-heading">Outlets</p>
+            <div class="outlet-list" id="outlet-list"></div>
+          </div>
         </div>
-        <div class="rail-block">
-          <p class="rail-heading">Outlets</p>
-          <div class="outlet-list" id="outlet-list"></div>
-        </div>
+        <div id="rail-facts" hidden></div>
       </div>
     </aside>
 
@@ -88,7 +81,10 @@
         <p class="empty-state" id="empty-state" hidden>No tearsheets match this filter — try another year or outlet.</p>
       </div>
 
-      <!-- About view (bio + contact), toggled by the Photographer tab -->
+      <!-- Articles view (published-story links) -->
+      <div id="articles-view" hidden></div>
+
+      <!-- About view (bio), toggled by the Photographer tab -->
       <div id="about-view" hidden></div>
     </main>
 
@@ -105,7 +101,7 @@
         <div class="rail-block">
           <p class="rail-heading">Contact</p>
           <div class="contact-block" id="contact-block"></div>
-          <a class="btn-nyt" id="nyt-btn" href="#" target="_blank" rel="noopener">View NYT Profile ↗</a>
+          <div class="profile-links" id="profile-links"></div>
         </div>
       </div>
     </aside>

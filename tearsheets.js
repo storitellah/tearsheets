@@ -1,69 +1,120 @@
 /* ============================================================================
  *  tearsheets.js  —  CENTRAL DATA FILE  (edit this file to update the archive)
  * ----------------------------------------------------------------------------
- *  The whole site (masthead, bio, filters, tabs, grid, lightbox) reads from the
- *  objects in this file. Edit here — you never need to touch app.js.
+ *  The whole site (masthead, bio, tabs, filters, grid, articles, lightbox)
+ *  reads from the objects in this file. Edit here — you never touch app.js.
  *
- *  ── HOW TO ADD A TEARSHEET ──────────────────────────────────────────────
- *  Copy one { ... } block inside TEARSHEETS, paste it, change the fields:
- *    id          unique slug                                   (required)
- *    title       story headline                                (required)
- *    outlet      publication, e.g. "The New York Times"        (required)
- *    date        "YYYY-MM-DD" — powers the year filter/sorting (required)
- *    page        e.g. "Print Edition", "Page A1"               (optional)
- *    category    topic tag, e.g. "Foreign Affairs"             (optional)
- *    cover       true to show it under the "Cover Pages" tab   (optional)
- *    summary     one/two-sentence synopsis                     (optional)
- *    imageUrl    a Google Drive SHARE link, direct URL, or
- *                local path — Drive links auto-convert.        (required)
- *    articleUrl  link to the original online story             (optional)
+ *  ── SECTIONS ────────────────────────────────────────────────────────────
+ *    CONFIG      masthead / edition settings
+ *    BIO         the photographer's biography (shown on "The Photographer")
+ *    CONTACT     emails, phone, WhatsApp, website, press profiles
+ *    ARTICLES    curated list of published online stories ("The Articles" tab)
+ *    TEARSHEETS  every clipping in the archive (grid + lightbox)
  *
- *  ── GOOGLE DRIVE IMAGES ─────────────────────────────────────────────────
- *  Paste the normal Drive "Share" link:
- *      https://drive.google.com/file/d/FILE_ID/view?usp=sharing
- *  It is converted to a hot-linkable image automatically (see app.js). For the
- *  images to appear, set each file's sharing to "Anyone with the link".
- *
- *  Every entry below was generated from the photographer's Google Drive
- *  archive; where the original online story was known, its real link is used.
+ *  ── ADD A TEARSHEET ─────────────────────────────────────────────────────
+ *  Copy a { ... } block in TEARSHEETS. Fields: id, title, outlet, date
+ *  ("YYYY-MM-DD"), page, category, cover (true → "Cover Pages" tab), summary,
+ *  imageUrl (a Drive SHARE link / direct URL / local path — Drive links
+ *  auto-convert), articleUrl (optional original-story link).
+ *  For images to appear, set each Drive file's sharing to "Anyone with the link".
  * ========================================================================== */
 
 
 /* ── MASTHEAD / EDITION CONFIG ───────────────────────────────────────────── */
 const CONFIG = {
-  title:    "The Tearsheet Archives of Brian Otieno",   // masthead nameplate
-  titleUrl: "https://storitellah.com",                  // masthead links here
+  title:    "The Tearsheet Archives of Brian Otieno",
+  titleUrl: "https://storitellah.com",
   motto:    "Photojournalism · Print Spreads · Front-Page Features",
   location: "Nairobi, Kenya",
-  weather:  "26°C · Clear Skies",                        // static (front-end only)
+  weather:  "26°C · Clear Skies",
   volume:   "Vol. XII",
   issue:    "No. 214",
   siteUrl:  "https://tearsheets.pages.dev/",
 };
 
 
-/* ── ABOUT / BIO  (edit freely — sourced from storitellah.com) ───────────── */
+/* ── ABOUT / BIO ─────────────────────────────────────────────────────────── */
 const BIO = {
   name: "Brian Otieno",
-  role: "Documentary Photographer & Photojournalist — Nairobi, Kenya",
-  // A short bio. Rewrite in Brian's own words from storitellah.com as preferred.
+  role: "Freelance Photojournalist & Documentary Photographer — Nairobi, Kenya",
   paragraphs: [
-    "Brian Otieno is a Kenyan documentary photographer and photojournalist based in Nairobi. He grew up in Kibera — one of Africa's largest informal settlements — and it was there, through his ongoing project <em>Storitellah</em>, that he began telling the everyday stories of his community from the inside: its resilience, its joy, its ordinary life beyond the headlines.",
-    "His work spans breaking news, long-form documentary and portraiture across East Africa, and has been published and exhibited internationally. He photographs regularly for <em>The New York Times</em>, and his images have appeared in the <em>Financial Times</em>, <em>The Guardian</em>, <em>Der Spiegel</em>, <em>National Geographic</em>, <em>Al Jazeera</em>, the <em>BBC</em>, the <em>Washington Post</em> and <em>Deutsche Welle</em>, among many others.",
+    "Brian Otieno is a freelance photojournalist and documentary photographer based in Nairobi, Kenya. He was raised in Kibera, where he documents the everyday realities of life through his photo project, KiberaStories, which began in 2013. His passion and commitment lie in capturing the stories of the vibrant community of Kibera and attempting to look beyond the chaotic appearance of his hometown and depict a broader spectrum of life from socio-economic, cultural, political and environmental perspectives.",
+    "In 2018 and 2019, he exhibited his project KiberaStories in Paris, Kampala, Lisbon and New York. He also participated in the 16th International Dialogue on Population and Sustainable Development in Berlin (October 2018), presenting his collection of photographs, “Women of Kibera”, taken as part of the EU-funded #RightByHer campaign, which works across Africa to make women’s rights a reality.",
+    "He was among the 12 visual storytellers selected in 2016 for the World Press Photo East Africa Masterclass in Nairobi, and in 2019, he was selected to attend the New York Times Portfolio Review. Since 2017, he has contributed to Everyday Africa — a collective of photographers sharing images from across the continent to undermine stereotypes and clichés. A professional photographer since 2016, he has balanced his documentary work with assignments for international publications and development organisations. He works regularly as a freelance photojournalist and has contributed visual stories to media outlets, including The New York Times, The Guardian, National Geographic, Der Spiegel, and Rest of World.",
+    "KiberaStories won the inaugural East African Photography Award in Kampala in October 2018. He was also awarded in the Feature Stories category at the Kenya Press Photo Awards in 2017 and the Daily Life and Portraiture categories at the Kenya Photography Awards in 2018. In 2019, Brian Otieno was selected as a recipient of the Reuters Photojournalism Grant.",
   ],
 };
 
 
 /* ── CONTACT DETAILS ─────────────────────────────────────────────────────── */
 const CONTACT = {
-  emails:   ["brian@storitellah.com", "bryanjaybee@gmail.com"],
-  phone:    "+254736350881",         // also on WhatsApp
-  whatsapp: "+254736350881",
-  website:  "https://storitellah.com",
+  emails:     ["brian@storitellah.com", "bryanjaybee@gmail.com"],
+  phone:      "+254736350881",   // also on WhatsApp
+  whatsapp:   "+254736350881",
+  website:    "https://storitellah.com",
   nytProfile: "https://www.nytimes.com/by/brian-otieno",
+  spiegelProfile:    "https://www.spiegel.de/impressum/autor-b9713a5c-6d07-4d46-bb58-38cb90f5a643",
+  proPublicaProfile: "https://www.propublica.org/people/brian-otieno",
 };
 
+
+/* ── THE ARTICLES  (curated published online stories — clickable links) ──────
+ *  Sourced from Brian's own archive and a web search of his published bylines.
+ *  Add or edit freely: { title, outlet, date, url }.
+ * ------------------------------------------------------------------------- */
+const ARTICLES = [
+  { title: "After Trump Cuts to Kenya Food Aid, Children Died of Starvation", outlet: "ProPublica", date: "2025-12-17", url: "https://www.propublica.org/article/kenya-trump-usaid-world-food-program-starvation-children-deaths" },
+  { title: "The Summer of Starvation: A Mother Struggles to Keep Her Sons Alive", outlet: "ProPublica", date: "2025-11-01", url: "https://www.propublica.org/article/trump-usaid-kenya-humanitarian-aid-starvation-families-children" },
+  { title: "What I Saw at a Maternity Ward in Kenya After the U.S. Cut Off Aid", outlet: "ProPublica", date: "2025-10-01", url: "https://www.propublica.org/article/kakuma-kenya-matenity-ward-foreign-aid-cuts" },
+  { title: "The preachers behind Kenya’s online-only churches", outlet: "Rest of World", date: "2024-05-01", url: "https://restofworld.org/2024/kenya-virtual-churches-preachers/" },
+  { title: "Generation Lockdown: Schoolchildren Face a Steep Uphill Battle", outlet: "Der Spiegel", date: "2021-03-05", url: "https://www.spiegel.de/international/world/generation-lockdown-schoolchildren-around-the-world-face-a-steep-uphill-battle-a-58d3ad33-32f1-4f96-97cc-940e72ab03a9" },
+  { title: "This Kenyan cryptocurrency values inclusion over exclusivity", outlet: "Rest of World", date: "2020-07-15", url: "https://restofworld.org/2020/kenya-sarafu-local-cryptocurrency/" },
+  { title: "Balcony churches: Kenyans find new ways to worship in lockdown", outlet: "The Guardian", date: "2020-06-29", url: "https://www.theguardian.com/global-development/2020/jun/29/balcony-churches-kenyans-find-new-ways-to-worship-in-lockdown" },
+  { title: "In this sprawling city within a city, fighting coronavirus requires solidarity", outlet: "National Geographic", date: "2020-06-11", url: "https://www.nationalgeographic.com/history/article/kibera-sprawling-city-within-city-fighting-coronavirus-requires-solidarity" },
+  { title: "Kenya Rolls Out a Biometric ID. Critics Say It Threatens Millions.", outlet: "The New York Times", date: "2020-01-28", url: "https://www.nytimes.com/2020/01/28/world/africa/kenya-biometric-id.html" },
+  { title: "A Truck Bomb Kills Scores at a Mogadishu Checkpoint", outlet: "The New York Times", date: "2020-01-06", url: "https://www.nytimes.com/2020/01/06/world/africa/Somalia-mogadishu-bombing-students.html" },
+  { title: "A Kenyan Start-Up Brings Micro-Insurance to Small Farmers", outlet: "The New York Times", date: "2019-10-03", url: "https://www.nytimes.com/2019/10/03/business/microinsurance-africa-thomas-njeru.html" },
+  { title: "Five Places in Nairobi, Chosen by Zukiswa Wanner", outlet: "The New York Times", date: "2019-10-11", url: "https://www.nytimes.com/2019/10/11/travel/five-places-nairobi-Zukiswa-Wanner.html" },
+  { title: "Joy, despair and determination: photographs from Kibera", outlet: "The Guardian", date: "2019-08-13", url: "https://www.theguardian.com/global-development/gallery/2019/aug/13/joy-despair-and-determination-photographs-from-kibera" },
+  { title: "Climate protesters and the Lyra McKee funeral: the day’s best photos", outlet: "The Guardian", date: "2019-04-24", url: "https://www.theguardian.com/news/gallery/2019/apr/24/climate-protesters-and-lyra-mckee-funeral-wednesdays-best-photos" },
+  { title: "Everyday Africa: street photography beyond the stereotypes", outlet: "Deutsche Welle", date: "2019-04-01", url: "https://www.dw.com/en/everyday-africa-street-photography-beyond-the-stereotypes/g-48902978" },
+  { title: "The African photographers reframing the continent", outlet: "CNN Style", date: "2019-04-20", url: "https://edition.cnn.com/style/article/african-photographers-nataal-everyday-africa-tokini-peterside/index.html" },
+  { title: "The week in photos", outlet: "The Washington Post", date: "2019-04-22", url: "https://www.washingtonpost.com/graphics/2019/world/amp-stories/week-in-photos-april-22/" },
+  { title: "The week in pictures, April 18–25", outlet: "NBC News", date: "2019-04-25", url: "https://www.nbcnews.com/slideshow/week-pictures-april-18-25-n998731" },
+  { title: "Holy Week rituals around the world", outlet: "NBC News", date: "2019-04-20", url: "https://www.nbcnews.com/slideshow/holy-week-rituals-around-world-n996711" },
+  { title: "Pictures of the day, 13 March 2019", outlet: "The Telegraph", date: "2019-03-13", url: "https://www.telegraph.co.uk/news/2019/03/13/pictures-day-13-march-2019/" },
+  { title: "Photos: The world rings in the New Year, 2019", outlet: "The Denver Post", date: "2019-01-01", url: "https://www.denverpost.com/2019/01/01/photos-world-rings-new-year-2019/" },
+  { title: "In Pictures: Kibera women and children bear the brunt of heavy rains", outlet: "Al Jazeera", date: "2018-03-14", url: "https://www.aljazeera.com/gallery/2018/3/14/kibera-women-children-bear-brunt-of-heavy-rains" },
+  { title: "Kenyan app developers harness technology to take on gender gaps", outlet: "News Deeply", date: "2018-04-16", url: "https://www.newsdeeply.com/womensadvancement/articles/2018/04/16/kenyan-app-developers-harness-technology-to-take-on-gender-gaps" },
+  { title: "Kenya’s Kibera: life in one of Africa’s largest informal settlements", outlet: "BBC", date: "2017-06-15", url: "https://www.bbc.com/news/world-africa-40012435" },
+  { title: "One year of Women & Girls", outlet: "News Deeply", date: "2017-05-16", url: "https://www.newsdeeply.com/womenandgirls/articles/2017/05/16/one-year-of-women-girls-on-news-deeply" },
+];
+
 const TEARSHEETS = [
+  {
+    "id": "print-portfolio-jul-2026-uuc4kw",
+    "title": "Print & Portfolio · Jul 2026",
+    "outlet": "Print & Portfolio",
+    "date": "2026-07-27",
+    "page": "",
+    "category": "Feature",
+    "cover": false,
+    "summary": "",
+    "imageUrl": "https://drive.google.com/file/d/1zCbbRT0-rWwRNfC717DtOYDQOZUUc4kW/view?usp=sharing",
+    "articleUrl": ""
+  },
+  {
+    "id": "print-portfolio-jul-2026-yjqedd",
+    "title": "Print & Portfolio · Jul 2026",
+    "outlet": "Print & Portfolio",
+    "date": "2026-07-27",
+    "page": "",
+    "category": "Feature",
+    "cover": false,
+    "summary": "",
+    "imageUrl": "https://drive.google.com/file/d/1AdmK63eoh3Iv22bI1BZlK7ZG3eyJqEDd/view?usp=sharing",
+    "articleUrl": ""
+  },
   {
     "id": "in-autometropool-nairobi-is-fietsen-ee-7aqjut",
     "title": "In Autometropool Nairobi is Fietsen Een Uiting Van Verzet Ik Wil Dat Mensen Zien Kijk…",
@@ -79,7 +130,7 @@ const TEARSHEETS = [
   {
     "id": "zoals-de-vogels-hun-lied-doorgeven-zo--134xwf",
     "title": "Zoals De Vogels Hun Lied Doorgeven Zo Geven Wij Afrikanen Onze Verhalen Door",
-    "outlet": "Print & Portfolio",
+    "outlet": "NRC Handelsblad",
     "date": "2026-06-19",
     "page": "",
     "category": "Health & Science",
@@ -101,6 +152,66 @@ const TEARSHEETS = [
     "articleUrl": ""
   },
   {
+    "id": "nrc-handelsblad-jun-2026-jwuixi",
+    "title": "NRC Handelsblad · Jun 2026",
+    "outlet": "NRC Handelsblad",
+    "date": "2026-06-10",
+    "page": "",
+    "category": "Feature",
+    "cover": false,
+    "summary": "",
+    "imageUrl": "https://drive.google.com/file/d/1dbiUD26kAAxp0FekaTVsPkz3tLJwuixI/view?usp=sharing",
+    "articleUrl": ""
+  },
+  {
+    "id": "nrc-handelsblad-jun-2026-takime",
+    "title": "NRC Handelsblad · Jun 2026",
+    "outlet": "NRC Handelsblad",
+    "date": "2026-06-10",
+    "page": "",
+    "category": "Feature",
+    "cover": false,
+    "summary": "",
+    "imageUrl": "https://drive.google.com/file/d/1XKfvef9vpP-VSCmFBNNBuUqaXPtAkIMe/view?usp=sharing",
+    "articleUrl": ""
+  },
+  {
+    "id": "die-zeit-may-2026-rardrc",
+    "title": "Die Zeit · May 2026",
+    "outlet": "Die Zeit",
+    "date": "2026-05-19",
+    "page": "",
+    "category": "Feature",
+    "cover": false,
+    "summary": "",
+    "imageUrl": "https://drive.google.com/file/d/1mcA1ONzWX8Z-6DT53ZOB_RRkr-aRD-RC/view?usp=sharing",
+    "articleUrl": ""
+  },
+  {
+    "id": "ap-sp-hausmitteilung-all-ylvasc",
+    "title": "Ap Sp Hausmitteilung All",
+    "outlet": "Der Spiegel",
+    "date": "2026-05-19",
+    "page": "Print Edition",
+    "category": "Feature",
+    "cover": true,
+    "summary": "",
+    "imageUrl": "https://drive.google.com/file/d/1EBAHhHO8gF4fkVS6GC17FsD5W1YlvAsC/view?usp=sharing",
+    "articleUrl": ""
+  },
+  {
+    "id": "ap-sp-russischearmeekenia-all-ytpxar",
+    "title": "Ap Sp Russischearmeekenia All",
+    "outlet": "Der Spiegel",
+    "date": "2026-05-19",
+    "page": "Print Edition",
+    "category": "Feature",
+    "cover": true,
+    "summary": "",
+    "imageUrl": "https://drive.google.com/file/d/1bXgSVodpB1rjGc4d8nrEgtK6jZyTPxar/view?usp=sharing",
+    "articleUrl": ""
+  },
+  {
     "id": "hospitals-experience-the-fringe-benefi-pbrkb5",
     "title": "Hospitals Experience the Fringe Benefits of the COVID Pandemic",
     "outlet": "Der Spiegel",
@@ -110,6 +221,42 @@ const TEARSHEETS = [
     "cover": false,
     "summary": "Changes to Africa's health-care system that would otherwise have taken years happened overnight — and some Nairobi hospitals found good news in the tragedy.",
     "imageUrl": "https://drive.google.com/file/d/14txx87dT8AsaHa0PtNyeso8lGoPbRKB5/view?usp=sharing",
+    "articleUrl": ""
+  },
+  {
+    "id": "print-portfolio-apr-2026-9umzbe",
+    "title": "Print & Portfolio · Apr 2026",
+    "outlet": "Print & Portfolio",
+    "date": "2026-04-24",
+    "page": "",
+    "category": "Feature",
+    "cover": false,
+    "summary": "",
+    "imageUrl": "https://drive.google.com/file/d/1-EJnAzbdIerM3j9xgn--cbB16H9umzBe/view?usp=sharing",
+    "articleUrl": ""
+  },
+  {
+    "id": "print-portfolio-apr-2026-fq4qvn",
+    "title": "Print & Portfolio · Apr 2026",
+    "outlet": "Print & Portfolio",
+    "date": "2026-04-04",
+    "page": "",
+    "category": "Feature",
+    "cover": false,
+    "summary": "",
+    "imageUrl": "https://drive.google.com/file/d/1LPIg5IPJikF40mZDsP531VUvrxfQ4QVN/view?usp=sharing",
+    "articleUrl": ""
+  },
+  {
+    "id": "the-new-york-times-front-page-december-n3alut",
+    "title": "The New York Times — Front Page, December 21, 2025",
+    "outlet": "The New York Times",
+    "date": "2025-12-21",
+    "page": "Print Edition",
+    "category": "Cover Page",
+    "cover": true,
+    "summary": "The New York Times print front page, December 21, 2025.",
+    "imageUrl": "https://drive.google.com/file/d/1DIwpOD4XhzU0w0f-cncEE8kObyn3ALut/view?usp=sharing",
     "articleUrl": ""
   },
   {
@@ -451,7 +598,7 @@ const TEARSHEETS = [
   {
     "id": "mag-credo-xl-spiel-en-k8jrib",
     "title": "Mag Credo Xl Spiel En",
-    "outlet": "Print & Portfolio",
+    "outlet": "Credo",
     "date": "2025-06-10",
     "page": "",
     "category": "Health & Science",
@@ -746,6 +893,66 @@ const TEARSHEETS = [
     "cover": true,
     "summary": "",
     "imageUrl": "https://drive.google.com/file/d/1Tz_IcLpBEDQRVEdbwc4h76mthOPA64HV/view?usp=sharing",
+    "articleUrl": ""
+  },
+  {
+    "id": "credo-oct-2024-mw6dga",
+    "title": "Credo · Oct 2024",
+    "outlet": "Credo",
+    "date": "2024-10-10",
+    "page": "",
+    "category": "Feature",
+    "cover": false,
+    "summary": "",
+    "imageUrl": "https://drive.google.com/file/d/1--GD9r8P9r3u0LcZbAlHgCTo3DMw6DGa/view?usp=sharing",
+    "articleUrl": ""
+  },
+  {
+    "id": "credo-oct-2024-cauqpd",
+    "title": "Credo · Oct 2024",
+    "outlet": "Credo",
+    "date": "2024-10-10",
+    "page": "",
+    "category": "Feature",
+    "cover": false,
+    "summary": "",
+    "imageUrl": "https://drive.google.com/file/d/1-0XU2x1e-uT5AqhHUdTgdrMQlCaUq-pD/view?usp=sharing",
+    "articleUrl": ""
+  },
+  {
+    "id": "credo-oct-2024-pzq6jb",
+    "title": "Credo · Oct 2024",
+    "outlet": "Credo",
+    "date": "2024-10-10",
+    "page": "",
+    "category": "Feature",
+    "cover": false,
+    "summary": "",
+    "imageUrl": "https://drive.google.com/file/d/1-80_muCmxrbWfnkFEuZD44NowzpZQ6jb/view?usp=sharing",
+    "articleUrl": ""
+  },
+  {
+    "id": "credo-oct-2024-9ednc6",
+    "title": "Credo · Oct 2024",
+    "outlet": "Credo",
+    "date": "2024-10-10",
+    "page": "",
+    "category": "Feature",
+    "cover": false,
+    "summary": "",
+    "imageUrl": "https://drive.google.com/file/d/1-8D2iZyjIUIavhWrpGH7atdOKJ9EDnC6/view?usp=sharing",
+    "articleUrl": ""
+  },
+  {
+    "id": "credo-oct-2024-f1ogur",
+    "title": "Credo · Oct 2024",
+    "outlet": "Credo",
+    "date": "2024-10-10",
+    "page": "",
+    "category": "Feature",
+    "cover": false,
+    "summary": "",
+    "imageUrl": "https://drive.google.com/file/d/1-8zBTDLkCuWYZgA0rBf7rnOsKBf1oGuR/view?usp=sharing",
     "articleUrl": ""
   },
   {
@@ -1303,7 +1510,7 @@ const TEARSHEETS = [
   {
     "id": "mit-tech-review-syydib",
     "title": "Mit Tech Review",
-    "outlet": "Print & Portfolio",
+    "outlet": "MIT Technology Review",
     "date": "2022-04-09",
     "page": "",
     "category": "Health & Science",
@@ -1315,7 +1522,7 @@ const TEARSHEETS = [
   {
     "id": "mit-tech-review-e0dcld",
     "title": "Mit Tech Review",
-    "outlet": "Print & Portfolio",
+    "outlet": "MIT Technology Review",
     "date": "2022-04-09",
     "page": "",
     "category": "Health & Science",
@@ -1327,7 +1534,7 @@ const TEARSHEETS = [
   {
     "id": "mit-tech-review-nhjmwo",
     "title": "Mit Tech Review",
-    "outlet": "Print & Portfolio",
+    "outlet": "MIT Technology Review",
     "date": "2022-04-09",
     "page": "",
     "category": "Arts & Culture",
@@ -1339,7 +1546,7 @@ const TEARSHEETS = [
   {
     "id": "mit-tech-review-lmcd5p",
     "title": "Mit Tech Review",
-    "outlet": "Print & Portfolio",
+    "outlet": "MIT Technology Review",
     "date": "2022-04-09",
     "page": "",
     "category": "Arts & Culture",
@@ -1421,9 +1628,9 @@ const TEARSHEETS = [
     "articleUrl": ""
   },
   {
-    "id": "the-new-york-times-jul-2021-enx58d",
-    "title": "The New York Times · Jul 2021",
-    "outlet": "The New York Times",
+    "id": "print-portfolio-jul-2021-enx58d",
+    "title": "Print & Portfolio · Jul 2021",
+    "outlet": "Print & Portfolio",
     "date": "2021-07-19",
     "page": "",
     "category": "Arts & Culture",
@@ -1627,7 +1834,7 @@ const TEARSHEETS = [
   {
     "id": "credo-magazine-38ay0c",
     "title": "Credo Magazine",
-    "outlet": "Print & Portfolio",
+    "outlet": "Credo",
     "date": "2020-12-31",
     "page": "",
     "category": "Arts & Culture",
@@ -1637,9 +1844,9 @@ const TEARSHEETS = [
     "articleUrl": ""
   },
   {
-    "id": "print-portfolio-front-page-dec-2020-g0u9gb",
-    "title": "Print & Portfolio · Front Page · Dec 2020",
-    "outlet": "Print & Portfolio",
+    "id": "africa-magazine-front-page-dec-2020-g0u9gb",
+    "title": "Africa (magazine) · Front Page · Dec 2020",
+    "outlet": "Africa (magazine)",
     "date": "2020-12-13",
     "page": "Print Edition",
     "category": "Cover Page",
@@ -1651,7 +1858,7 @@ const TEARSHEETS = [
   {
     "id": "africa-novembre-dicembre-doppia-page-ks9tgc",
     "title": "Africa Novembre Dicembre Doppia Page",
-    "outlet": "Print & Portfolio",
+    "outlet": "Africa (magazine)",
     "date": "2020-12-13",
     "page": "Print Edition",
     "category": "Arts & Culture",
@@ -1663,7 +1870,7 @@ const TEARSHEETS = [
   {
     "id": "africa-novembre-dicembre-doppia-page-vzyhhq",
     "title": "Africa Novembre Dicembre Doppia Page",
-    "outlet": "Print & Portfolio",
+    "outlet": "Africa (magazine)",
     "date": "2020-12-13",
     "page": "",
     "category": "Arts & Culture",
@@ -1675,7 +1882,7 @@ const TEARSHEETS = [
   {
     "id": "africa-novembre-dicembre-doppia-page-0c5zak",
     "title": "Africa Novembre Dicembre Doppia Page",
-    "outlet": "Print & Portfolio",
+    "outlet": "Africa (magazine)",
     "date": "2020-12-13",
     "page": "",
     "category": "Arts & Culture",
@@ -1687,7 +1894,7 @@ const TEARSHEETS = [
   {
     "id": "africa-novembre-dicembre-doppia-page-pitezv",
     "title": "Africa Novembre Dicembre Doppia Page",
-    "outlet": "Print & Portfolio",
+    "outlet": "Africa (magazine)",
     "date": "2020-12-13",
     "page": "",
     "category": "Arts & Culture",
@@ -1699,7 +1906,7 @@ const TEARSHEETS = [
   {
     "id": "africa-novembre-dicembre-doppia-page-slkjdx",
     "title": "Africa Novembre Dicembre Doppia Page",
-    "outlet": "Print & Portfolio",
+    "outlet": "Africa (magazine)",
     "date": "2020-12-13",
     "page": "",
     "category": "Health & Science",
@@ -1711,7 +1918,7 @@ const TEARSHEETS = [
   {
     "id": "africa-novembre-dicembre-doppia-q79lhg",
     "title": "Africa Novembre Dicembre Doppia",
-    "outlet": "Print & Portfolio",
+    "outlet": "Africa (magazine)",
     "date": "2020-12-13",
     "page": "",
     "category": "Arts & Culture",
@@ -1759,7 +1966,7 @@ const TEARSHEETS = [
   {
     "id": "credo-magazine-mf9e27",
     "title": "Credo Magazine",
-    "outlet": "Print & Portfolio",
+    "outlet": "Credo",
     "date": "2020-11-22",
     "page": "Print Edition",
     "category": "Arts & Culture",
@@ -1771,7 +1978,7 @@ const TEARSHEETS = [
   {
     "id": "credo-magazine-zk5dhw",
     "title": "Credo Magazine",
-    "outlet": "Print & Portfolio",
+    "outlet": "Credo",
     "date": "2020-11-22",
     "page": "",
     "category": "Arts & Culture",
@@ -1783,7 +1990,7 @@ const TEARSHEETS = [
   {
     "id": "credo-magazine-jwpv5n",
     "title": "Credo Magazine",
-    "outlet": "Print & Portfolio",
+    "outlet": "Credo",
     "date": "2020-11-22",
     "page": "Print Edition",
     "category": "Arts & Culture",
@@ -1795,7 +2002,7 @@ const TEARSHEETS = [
   {
     "id": "credo-magazine-u7wds8",
     "title": "Credo Magazine",
-    "outlet": "Print & Portfolio",
+    "outlet": "Credo",
     "date": "2020-11-22",
     "page": "Print Edition",
     "category": "Arts & Culture",
@@ -1807,7 +2014,7 @@ const TEARSHEETS = [
   {
     "id": "credo-magazine-ebdqxv",
     "title": "Credo Magazine",
-    "outlet": "Print & Portfolio",
+    "outlet": "Credo",
     "date": "2020-11-22",
     "page": "Print Edition",
     "category": "Health & Science",
@@ -1819,7 +2026,7 @@ const TEARSHEETS = [
   {
     "id": "credo-magazine-s7lrry",
     "title": "Credo Magazine",
-    "outlet": "Print & Portfolio",
+    "outlet": "Credo",
     "date": "2020-11-22",
     "page": "",
     "category": "Foreign Affairs",
@@ -1913,9 +2120,9 @@ const TEARSHEETS = [
     "articleUrl": ""
   },
   {
-    "id": "the-new-york-times-front-page-feb-2020-61083u",
-    "title": "The New York Times · Front Page · Feb 2020",
-    "outlet": "The New York Times",
+    "id": "print-portfolio-front-page-feb-2020-61083u",
+    "title": "Print & Portfolio · Front Page · Feb 2020",
+    "outlet": "Print & Portfolio",
     "date": "2020-02-17",
     "page": "Print Edition",
     "category": "Cover Page",
@@ -2021,9 +2228,9 @@ const TEARSHEETS = [
     "articleUrl": "https://www.theguardian.com/global-development/gallery/2019/aug/13/joy-despair-and-determination-photographs-from-kibera"
   },
   {
-    "id": "the-new-york-times-front-page-jan-2020-dokzlc",
-    "title": "The New York Times · Front Page · Jan 2020",
-    "outlet": "The New York Times",
+    "id": "print-portfolio-front-page-jan-2020-dokzlc",
+    "title": "Print & Portfolio · Front Page · Jan 2020",
+    "outlet": "Print & Portfolio",
     "date": "2020-01-29",
     "page": "Print Edition",
     "category": "Cover Page",
@@ -2165,9 +2372,9 @@ const TEARSHEETS = [
     "articleUrl": "https://www.nytimes.com/2020/01/06/world/africa/Somalia-mogadishu-bombing-students.html"
   },
   {
-    "id": "the-new-york-times-front-page-jan-2020-f6xxvx",
-    "title": "The New York Times · Front Page · Jan 2020",
-    "outlet": "The New York Times",
+    "id": "print-portfolio-front-page-jan-2020-f6xxvx",
+    "title": "Print & Portfolio · Front Page · Jan 2020",
+    "outlet": "Print & Portfolio",
     "date": "2020-01-07",
     "page": "Print Edition",
     "category": "Cover Page",
@@ -2393,26 +2600,26 @@ const TEARSHEETS = [
     "articleUrl": ""
   },
   {
-    "id": "photography-brian-otieno-chrismon-feat-xbcvjz",
-    "title": "Photography: Brian Otieno — Chrismon Feature",
-    "outlet": "Chrismon",
+    "id": "kibera-stories-portfolio-feature-xbcvjz",
+    "title": "Kibera Stories — Portfolio Feature",
+    "outlet": "Msafiri",
     "date": "2019-10-09",
     "page": "Print Edition",
     "category": "Arts & Culture",
     "cover": true,
-    "summary": "A photo feature in Chrismon magazine.",
+    "summary": "A Msafiri “Portfolio” feature on Kibera Stories — text by Joost Bastmeijer, photography by Brian Otieno.",
     "imageUrl": "https://drive.google.com/file/d/0B57ItllBdxzvVHZNOVlDSkJFX3lZXzlWV1RYXzNGY0xBcVJZ/view?usp=sharing",
     "articleUrl": ""
   },
   {
-    "id": "chrismon-magazine-september-cover-z4ewi4",
-    "title": "Chrismon Magazine — September Cover",
-    "outlet": "Chrismon",
+    "id": "msafiri-september-2019-cover-z4ewi4",
+    "title": "Msafiri — September 2019 Cover",
+    "outlet": "Msafiri",
     "date": "2019-10-09",
     "page": "Print Edition",
     "category": "Cover Page",
     "cover": true,
-    "summary": "Cover of the September 2019 edition of Chrismon magazine.",
+    "summary": "Cover of the September 2019 issue of Msafiri, Kenya Airways’ inflight magazine.",
     "imageUrl": "https://drive.google.com/file/d/0B57ItllBdxzveU9wMk5SeHFCQ0xXUEVwaWhuV0NaanZ4eWI4/view?usp=sharing",
     "articleUrl": ""
   },
