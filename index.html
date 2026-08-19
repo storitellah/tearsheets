@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Tearsheet Archives of Brian Otieno</title>
+  <meta name="description" content="A broadsheet-style archive of the editorial photojournalism, print spreads and front-page features of Brian Otieno — documentary photographer, Nairobi." />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+
+  <!-- Type is self-hosted (NYT Cheltenham / Imperial / Franklin) in styles.css -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+  <!-- ── Top utility bar ─────────────────────────────────────────────────── -->
+  <div class="topbar">
+    <div class="wrap">
+      <div class="tb-group">
+        <span id="bar-date">—</span>
+        <span>📍 <b id="bar-location">—</b></span>
+        <span id="bar-weather">—</span>
+      </div>
+      <div class="tb-group">
+        <span id="bar-edition">—</span>
+        <span class="tb-site"><a id="bar-site" href="#" target="_blank" rel="noopener">tearsheets.pages.dev</a></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Masthead (nameplate links to storitellah.com, no rules around it) ── -->
+  <header class="wrap masthead">
+    <h1 class="masthead-title"><a id="masthead-link" href="#"><span id="masthead-title">The Tearsheet Archives of Brian Otieno</span></a></h1>
+    <p class="masthead-motto" id="masthead-motto">Photojournalism · Print Spreads · Front-Page Features</p>
+  </header>
+
+  <!-- ── Primary navigation / tabs ───────────────────────────────────────── -->
+  <nav class="nav">
+    <div class="wrap" id="tabs"></div>
+  </nav>
+
+  <!-- ── Three-column homepage layout ────────────────────────────────────── -->
+  <div class="wrap layout">
+
+    <!-- Left rail: filters (browse) OR career facts (about) — never blank -->
+    <aside class="rail-left">
+      <div class="sticky" id="rail-left-inner">
+        <div id="rail-filters">
+          <div class="rail-block">
+            <p class="rail-heading" id="year-heading">Timeline</p>
+            <div class="year-list" id="year-list"></div>
+          </div>
+          <div class="rail-block">
+            <p class="rail-heading">Outlets</p>
+            <div class="outlet-list" id="outlet-list"></div>
+          </div>
+        </div>
+        <div id="rail-facts" hidden></div>
+      </div>
+    </aside>
+
+    <!-- Centre well: stories -->
+    <main class="center">
+      <!-- Filters collapse to dropdowns on narrow screens -->
+      <div class="mobile-filters">
+        <select id="m-year"></select>
+        <select id="m-outlet"></select>
+      </div>
+
+      <div class="section-head" id="section-head">
+        <h2 id="section-title">The Front Page</h2>
+        <span class="count" id="results-count"></span>
+      </div>
+
+      <!-- Archive view (lead + grid) -->
+      <div id="archive-view">
+        <section class="lead" id="lead-story"></section>
+        <section class="grid" id="grid"></section>
+        <p class="empty-state" id="empty-state" hidden>No tearsheets match this filter — try another year or outlet.</p>
+      </div>
+
+      <!-- Articles view (published-story links) -->
+      <div id="articles-view" hidden></div>
+
+      <!-- About view (bio), toggled by the Photographer tab -->
+      <div id="about-view" hidden></div>
+    </main>
+
+    <!-- Right rail: the photographer & contact -->
+    <aside class="rail-right">
+      <div class="sticky">
+        <div class="bio-card" id="bio-card"></div>
+
+        <div class="rail-block">
+          <p class="rail-heading">The Archive</p>
+          <div class="stat-row" id="stat-row"></div>
+        </div>
+
+        <div class="rail-block">
+          <p class="rail-heading">Contact</p>
+          <div class="contact-block" id="contact-block"></div>
+          <div class="profile-links" id="profile-links"></div>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <!-- ── Footer / colophon ───────────────────────────────────────────────── -->
+  <footer class="wrap colophon">
+    <p id="footer-line"></p>
+  </footer>
+
+  <!-- ── Lightbox / reader modal ─────────────────────────────────────────── -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Tearsheet reader">
+    <div class="modal-backdrop"></div>
+    <div class="modal-panel">
+      <button class="modal-close" id="modal-close" aria-label="Close reader">×</button>
+      <div class="modal-imgcol"><img id="modal-img" src="" alt="" /></div>
+      <div class="modal-meta">
+        <div class="kicker">
+          <span class="outlet-badge" id="modal-outlet"></span>
+          <span class="dot">•</span>
+          <span id="modal-category"></span>
+        </div>
+        <h2 class="modal-headline" id="modal-title"></h2>
+        <dl class="modal-dl">
+          <dt>Date</dt><dd id="modal-date"></dd>
+          <dt>Section</dt><dd id="modal-page"></dd>
+        </dl>
+        <p class="modal-summary" id="modal-summary"></p>
+        <a class="modal-link" id="modal-link" href="#" target="_blank" rel="noopener" hidden></a>
+      </div>
+    </div>
+  </div>
+
+  <script src="tearsheets.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
